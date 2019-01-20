@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     savedRolls: [{
+      id: 1,
       diceNumber: 3,
       diceType: 20,
       modifier: 1,

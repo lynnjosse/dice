@@ -36,12 +36,11 @@ const recursivelyRoll = (number, type) => {
 if (number === 1) {
   return Math.floor(Math.random() * type) +1;
   }
-
 return (Math.floor(Math.random() * type) +1) + recursivelyRoll(number - 1, type);
 }
 
 export default Vue.extend({
-  name: "DiceLine",
+  name: "dice-line",
   computed:{ diceLine (){
     return this.$store.state.savedRolls[0];
   }},
