@@ -33,7 +33,7 @@ import store from '../store';
 import Vue from "vue";
 
 const recursivelyRoll = (number, type) => {
-if (number === 1) {
+if (number == 1) {
   return Math.floor(Math.random() * type) +1;
   }
 return (Math.floor(Math.random() * type) +1) + recursivelyRoll(number - 1, type);
