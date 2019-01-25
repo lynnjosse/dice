@@ -14,12 +14,15 @@ export default new Vuex.Store({
   },
   mutations: {
     setDice(state, diceLine){
+      console.log('diceline in mutation', diceLine)
       state.savedRolls[0] = diceLine;
+      console.log('first element in arrayat the end of mutaiton', state.savedRolls[0])
+      console.log('state.savedRolls', state.savedRolls)
     }
   },
   actions: {
-    setThoseDice({ commit }) {
-      commit('setDice')
+    setThoseDice({ commit }, diceLine) {
+      commit('setDice', diceLine)
     }
   }
 });

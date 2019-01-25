@@ -53,7 +53,7 @@ export default Vue.extend({
     rollem:  function(){
       this.result = recursivelyRoll(this.diceLine.diceNumber, this.diceLine.diceType) + parseInt(this.diceLine.modifier);
       
-      this.$store.commit('setDice', this.diceLine);
+      this.$store.dispatch('setThoseDice', this.diceLine);
     },
   },
 });
