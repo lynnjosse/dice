@@ -17,5 +17,9 @@ export default new Vuex.Store({
       state.savedRolls[0] = diceLine;
     }
   },
-  actions: {}
+  actions: {
+    setThoseDice({ commit }) {
+      commit('setDice')
+    }
+  }
 });
