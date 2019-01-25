@@ -41,9 +41,7 @@ return (Math.floor(Math.random() * type) +1) + recursivelyRoll(number - 1, type)
 
 export default Vue.extend({
   name: "dice-line",
-  computed:{ diceLine (){
-    return this.$store.state.savedRolls[0];
-  }},
+
   data: function() {
     return {
         result: 0,
@@ -56,6 +54,12 @@ export default Vue.extend({
       this.$store.commit('setDice', this.diceLine);
     },
   },
+  props: {
+    diceLine: {
+      type: Object,
+      required: true
+    }
+}
 });
 </script>
 
