@@ -18,8 +18,8 @@
     <option>100</option>
   </select>
   <span> modifier: </span>
-  <input v-model="diceLine.modifier" type="number" class="input-box">
-<button class="button" v-on:click="rollem">roll {{ diceLine.diceNumber }} d{{diceLine.diceType}} + {{diceLine.modifier}}</button> 
+  <input v-model="diceLine.modifier" type="number" class="dice-input-box">
+<button class="dice-button" v-on:click="rollem">roll {{ diceLine.diceNumber }} d{{diceLine.diceType}} + {{diceLine.modifier}}</button> 
 
 
   <div>result: {{result}}</div>
@@ -41,9 +41,7 @@ return (Math.floor(Math.random() * type) +1) + recursivelyRoll(number - 1, type)
 
 export default Vue.extend({
   name: "dice-line",
-  computed:{ diceLine (){
-    return this.$store.state.savedRolls[0];
-  }},
+
   data: function() {
     return {
         result: 0,
@@ -56,14 +54,29 @@ export default Vue.extend({
       this.$store.dispatch('setThoseDice', this.diceLine);
     },
   },
+  props: {
+    diceLine: {
+      type: Object,
+      required: true
+    }
+}
 });
 </script>
 
-<style>
-.input-box {
+<style scoped>
+[type='text'],
+[type='number'],
+[type='search'],
+[type='password'] {
+  height: 20px;
+  /* width: 100%;
+  padding: 0 10px; */
+  font-size: 12px;
+}
+.dice-input-box {
   width: 40px;
 }
-.button {
+.dice-button {
   border: 2px solid black;
   background-color: greenyellow;
 }

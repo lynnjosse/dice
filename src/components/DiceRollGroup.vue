@@ -1,10 +1,11 @@
 <template>
   <div>
     <dice-line 
+      
+      v-for="roll in savedRolls"
       :key="roll.id"
-      v-for="roll in savedRolls" >
+      :diceLine="roll">
     </dice-line>
-    heya
   </div>
 </template>
 
@@ -23,7 +24,6 @@ export default {
   computed:{ savedRolls (){
     return this.$store.state.savedRolls;
   }},
-
 }
 </script>
 

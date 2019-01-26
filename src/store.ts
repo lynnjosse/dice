@@ -10,14 +10,20 @@ export default new Vuex.Store({
       diceNumber: 3,
       diceType: 20,
       modifier: 1,
-    }]
+    },
+    {
+      id: 2,
+      diceNumber: 1,
+      diceType: 20,
+      modifier: 1,
+    }],
   },
   mutations: {
     setDice(state, diceLine){
-      console.log('diceline in mutation', diceLine)
-      state.savedRolls[0] = diceLine;
-      console.log('first element in arrayat the end of mutaiton', state.savedRolls[0])
-      console.log('state.savedRolls', state.savedRolls)
+      const rolls = state.savedRolls
+      const found = rolls.find(line => line.id === diceLine.id)
+      const index = found ? rolls.indexOf(found) : 0
+      state.savedRolls[index] = diceLine;
     }
   },
   actions: {
