@@ -18,8 +18,8 @@
     <option>100</option>
   </select>
   <span> modifier: </span>
-  <input v-model="diceLine.modifier" type="number" class="input-box">
-<button class="button" v-on:click="rollem">roll {{ diceLine.diceNumber }} d{{diceLine.diceType}} + {{diceLine.modifier}}</button> 
+  <input v-model="diceLine.modifier" type="number" class="dice-input-box">
+<button class="dice-button" v-on:click="rollem">roll {{ diceLine.diceNumber }} d{{diceLine.diceType}} + {{diceLine.modifier}}</button> 
 
 
   <div>result: {{result}}</div>
@@ -51,7 +51,8 @@ export default Vue.extend({
     rollem:  function(){
       this.result = recursivelyRoll(this.diceLine.diceNumber, this.diceLine.diceType) + parseInt(this.diceLine.modifier);
       
-      this.$store.commit('setDice', this.diceLine);
+      this.$store.dispatch('setThoseDice', this.diceLine);
+      console.log('store from inside the mutation', this.$store.state.savedRolls)
     },
   },
   props: {
@@ -63,11 +64,20 @@ export default Vue.extend({
 });
 </script>
 
-<style>
-.input-box {
+<style scoped>
+[type='text'],
+[type='number'],
+[type='search'],
+[type='password'] {
+  height: 20px;
+  /* width: 100%;
+  padding: 0 10px; */
+  font-size: 12px;
+}
+.dice-input-box {
   width: 40px;
 }
-.button {
+.dice-button {
   border: 2px solid black;
   background-color: greenyellow;
 }
